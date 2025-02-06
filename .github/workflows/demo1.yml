@@ -4,6 +4,14 @@ on:
     types:
       - opened
   workflow_dispatch:
+  push:
+    branches:
+      - master # master
+      - 'dev-*' # dev-new  dev-this-is-new
+      - 'feature/**' # feat/new feat/new/button
+      # developer-1 (Pushing to a branch like developer-1 will not trigger this workflow because it does not fall under any of these definitions.)
+    paths-ignore:
+      - '.github/workflows/*'
 jobs:
   deploy:
     runs-on: ubuntu-latest
